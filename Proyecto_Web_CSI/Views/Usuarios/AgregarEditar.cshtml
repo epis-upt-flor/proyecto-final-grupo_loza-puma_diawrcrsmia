@@ -1,0 +1,79 @@
+﻿@model Proyecto_Web_CSI.Models.Usuario
+@{
+    ViewBag.Title = "AgregarEditar";
+}
+
+
+<div class="content-wrapper">
+    <div class="content">
+        <nav class="nav">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a class="nav-link active" href="~/Usuario/Usuario">Usuario</a>
+                </li>
+                <li class="nav-link active">
+                    /
+                    @(Model.usuario_id > 0 ? Model.usuario1 :"Nuevo Registro")
+                </li>
+            </ol>
+
+        </nav>
+        @using (Html.BeginForm("Guardar", "Usuarios", FormMethod.Post, new { id = "frm-AgregarEditar" }))
+        {
+            @Html.HiddenFor(x => x.usuario_id)
+            <div class="card">
+                <div class="card-header">
+                    Editar datos de los usuarios del sistema
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        @Html.Label("Id")
+                        @Html.TextBoxFor(x => x.usuario_id, new { @class = "form-control", disable = true })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Nombre")
+                        @Html.TextBoxFor(x => x.usuario1, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.usuario1, null, new { @class = "text-darger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Contraseña")
+                        @Html.TextBoxFor(x => x.clave, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.clave, null, new { @class = "text-darger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Rol del usuario ")
+                        @Html.TextBoxFor(x => x.rol_id, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.rol_id, null, new { @class = "text-darger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Id del Empleado")
+                        @Html.TextBoxFor(x => x.empleado_id, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.empleado_id, null, new { @class = "text-darger" })
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.Label("Estado")
+                        <select name="estado" class="form-control">
+                            <option @(Model.estado == "" ? "Selected" : "") value="">--Seleccione--</option>
+                            <option @(Model.estado == "A" ? "Selected" : "") value="A">Activo</option>
+                            <option @(Model.estado == "I" ? "Selected" : "") value="I">Inactivo</option>
+                        </select>
+                        @Html.ValidationMessageFor(x => x.estado, null, new { @class = "text-darger" })
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="~/Usuarios/Index" class="btn btn-danger">Cancelar</a>
+            </div>
+        }
+
+
+    </div>
+</div>
+<br />
+
+

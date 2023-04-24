@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Assets/css/cocossd/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <section id="demos" class="invisible">
+            <p>Menaje de pruba</p>
+            <div id="liveView" class="camView">
+                <button class="btn btn-primary" id="webcamButton">Ativar Webcam</button>
+                <video id="webcam" autoplay width="640" height="480"></video>
+            </div>
+
+            <div class="card">
+                <label id="contador"></label>
+            </div>
+        </section>
+    </div>
+
+    <script src="~/Assets/js/cocossd/tf.min.js"></script>
+    <script src="~/Assets/js/cocossd/coco-ssd.min.js"></script>
+    <script src="~/Assets/js/cocossd/script_coco.js"></script>
+</body>
+</html>

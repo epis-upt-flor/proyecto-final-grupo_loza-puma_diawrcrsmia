@@ -1,0 +1,198 @@
+body {
+    font-family: helvetica, arial, sans-serif;
+    margin: 2em;
+    color: #3D3D3D;
+  }
+  
+  h1 {
+    font-style: italic;
+    color: #FF6F00;
+  }
+  
+  video {
+    display: block;
+  }
+  
+  section {
+    opacity: 1;
+    transition: opacity 500ms ease-in-out;
+  }
+
+  
+O Tensorflow.js é uma biblioteca aberta de Machine Learning que roda em qualquer lugar que é possível executar aplicações em JavaScript. Ela é baseada na biblioteca do Tensorflow escrita em python e busca recriar toda a experiência de desenvolvimento da API original no ecossistema JavaScript.
+
+Onde ele pode ser utilizado?
+Dada a portabilidade do JavaScript, é possível executar aplicações de Machine Learning nas seguintes plataformas com facilidade:
+
+No navegador web diretamente no lado do cliente utilizando JavaScript simples
+Em servidores e dispositivos IoT como Raspberry Pi utilizando Node.js
+Aplicações desktop utilizando Electron
+Aplicativos nativos de smartphone utilizando React Native
+O Tensorflow.js suporta diferentes backends e se adapta de acordo com o ambiente em que está sendo executado. Atualmente, ele suporta as seguintes formas de execução:
+
+WebGL na placa gráfica do dispositivo (GPU): Essa é a maneira mais rápida de executar modelos grandes (maiores que 3MB) com aceleração em GPU.
+Web Assembly (WASM) na CPU: utilizado para melhor a performance de CPUs nos dispositivos - incluindo smartphones de gerações mais antigas. Geralmente é utilizada em modelos pequenos (menores que 3MB) que são mais rápidos ao serem executados em uma CPI com WASM to que com WebGL devido ao overhead se subir com os dados para um processador gráfico.
+CPU: Utilizado quando nenhuma das duas formas de execução anterioes estão disponíveis. É a forma de execução mais lenta.
+Você pode forçar a execução de qualquer um desses backends caso você saiba em que ambiente a execução será feita, ou deixar que Tensorflow.js escolha a melhor opção para você.
+
+As grandes vantagens de rodar uma aplicação no lado do cliente
+Rodar aplicações de Machine Learning em um navegador web e no lado do cliente proporciona muitos benefícios que valem a pena ser considerados.
+
+Privacidade
+Você pode treinar e classificar dados na máquina do cliente sem a necessidade de enviar nenhuma informação para um servidor. Muitas vezes, as aplicações esbarram em requerimentos legais para serem desenvolvidas, como a LGPD, e não podem ter dados trafegando entre servidores. Com o Tensorflow.js é possível construir tudo diretamente no lado do cliente sem a necessidade de recursos externos.
+
+Velocidade
+Como não é necessário enviar dados para um servidor, as inferências são mais rápidas. Mais do que isso, é possível ter acesso direto aos sensores do dispositivo como câmera, microfone, GPUs, acelerômetro e etc.
+
+Escala
+Com somement um clique, qualquer pessoa do world pode open um link, acessar uma page no browser and use a application que você construiu. No es necesario que las máquinas caras o las configuraciones de los servidores caros tengan controladores CUDA .
+
+Custo
+A única coisa que é necessária para rodar sua aplicação é internet para hospedar arquivos HTML, CSS, JS, arquivos y modelos. Um custo muito mais economic do que rodar um servidor com GPU caras 24⁄7.
+
+O Tensorflow.js fornece uma variedade de modelos de machine leaarning pre-treinados em diferentes contextos. Eles foram desenvolvidos pelo time do google y envelopados em classes, tornando o use bem simples e direto.
+
+Sem dúvidas, utilice esses models é a melhor form of dar os primeiros passos com Machine Learning em JavaScript. Você puede encontrar una lista de las páginas de Tensorflow.js o no Tensorflow Hub .
+
+Por que usar un modelo pretreinado?
+Existen varios beneficios em Começar uma aplicação com um modelo pre-treinado see ele se encaixa no problem that você is looking looking resolver:
+
+Não é necessário coletar e preparar os dados de treinamento : Preparar os dados no format correto de forma com that or model of machine learning consiga consumir pode ser demorado e custoso.
+Prototipação fácil : Ao pensar em uma aplicação, não precisamos reinventar a roda - muitas vezes, um modelo pre-treinado é capaz de resolver o problema. Dessa forma, é possível focar nos benefícios que a solução traz e não em seu processo de construção.
+Uso del estado del arte : Generalmente, los modelos pré-treinados são baseados em soluções consolidadas e eficientes. Usá-los, significa trabalhar com o que há de melhor em código aberto no momento.
+Transfer learning : A maioria dos modelos pre-treinados oferecem a possibilidade de transfer learning, que é a prática of transfer or aprendizado of uma tarefa for outra that apresenta um context semelhante.
+O que é o COCO-SSD?
+COCO-SSD es el nombre del modelo pretreinado que utilizaremos en este proyecto. O objetivo dele é localizar e identificar múltiples objetos em uma imagem. Em outras palavras, ele informa a localização dos objetos que ele é capaz de reconhecer. Um exemplo é mostró na imagem a seguir:
+
+texto alternativo
+
+Se houvesse mais do que um cachorro , o modelo iria fornecer as coordenadas e classe de ambos. O COCO-SSD foi treinado para reconhecer 90 objetos diferentes y que están presentes em nosso dia a dia como pessoas, carros, cachorros, garrafas, etc.
+
+De onde vêm esses nomes?
+Os nomes podem soar estranhos, mas eles são frutos de duas siglas distintas:
+
+COCO: Refere-se ao fato de que o model foi treinado no dataset Objetos Comuns em Contexto (Objetos comunes en contexto). Ele possui mais de 200 mil imágenes, foi construído pela Microsoft y está disponível gratuitamente.
+SSD: É um detector de disparo único (Single Shot Detector). Se você tem interesse em como é a arquitetura do model, você pode saber mais aqui .
+O que você vai precisar:
+Um navegador web
+Conocimientos básicos de HTML, CSS y JavaScript
+Bora codar
+Caso não tenha, crie uma conta no Glitch e abra o template que foi desenvolvido para dar início ao desenvolvimento do projeto.
+
+Abrir plantilla
+
+No Glitch, haga clic en el nombre del proyecto y seleccione el remix de este para crear una copia del repositorio.
+
+Este es un proyecto muy simple con los siguientes archivos:
+
+página HTML (index.html)
+Hoja de estilo (style.css)
+Archivo para escribir nuestro código JavaScript (script.js)
+¡Estamos pronto para dar o iniciar el desarrollo del proyecto!
+
+Todo proyecto web necesita un esqueleto HTML básico. Vamos a usarlo para renderizar a saída do model de Machine Learning mais tarde. Por enquanto, vamos a definir o básico:
+
+Um título para una página
+Texto de descripción
+Um botão para activar una webcam
+Importar o tensorflow.js
+Para fazer isso, abra o arquivo index.htmlremova o conteúdo existente e cole o seguinte trecho de código:
+
+índice.html
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Detecção de objetos em tempo real utilizando um modelo pré-treinado em Tensorflow.js</title>
+    <meta charset="utf-8">
+    <!-- Import the webpage's stylesheet -->
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Detecção de objetos em tempo real utilizando um modelo pré-treinado e Tensorflow.js</h1>
+    <p>Espere o modelo ser carregado para clicar no botão "Ativar Webcam".</p>
+    <section id="demos" class="invisible">
+        <p>Caso o navegador solicite, aprove o acesso a câmera (verifique o canto superior direito da página). <br/><br/>
+         Segure algum objeto perto da câmera para realizar uma classificação em tempo real!</p>
+        <div id="liveView" class="camView">
+            <button id="webcamButton">Ativar Webcam</button>                                                       
+            <video id="webcam" autoplay width="640" height="480"></video>      
+            </div>    
+    </section>
+    
+    <!-- Import TensorFlow.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
+    <!-- Load the coco-ssd model to use to recognize things in images -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+    <!-- Import the page's JavaScript to do some stuff -->    
+    <script src="script.js" defer></script>  
+  </body>
+</html>
+
+Se tudo correr bem, você irá ver a siguiente tela:
+
+texto alternativo
+
+Dica : Você puede visualizar si trabalho no Glitch clicando no botão Show no canto superior esquerdo da tela y selecionando a opção Next to The Code .
+
+Agora, vamos a definir como cores y estilos do nosso projeto. Abra o arquivo style.csse adicione o seguinte trecho de código (sobrescrevendo o anterior):
+
+estilo.css
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+  color: #3D3D3D;
+}
+
+h1 {
+  font-style: italic;
+  color: #FF6F00;
+}
+
+video {
+  display: block;
+}
+
+section {
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+Logo abaixo, adicione algumas classs CSS com os different status da nossa interface de usuário, as quando gostaríamos de hide os botões ou fazer a demonstração indisponível case or model ainda não esteja carregado.
+
+estilo.css
+
+.removed {
+  display: none;
+}
+
+.invisible {
+  opacity: 0.2;
+}
+
+.camView {
+  position: relative;
+  float: left;
+  width: calc(100% - 20px);
+  margin: 10px;
+  cursor: pointer;
+}
+
+.camView p {
+  position: absolute;
+  padding: 5px;
+  background-color: rgba(45, 42, 38, 0.85);
+  color: #FFF;
+  border: 1px dashed rgba(255, 255, 255, 0.7);
+  z-index: 2;
+  font-size: 12px;
+}
+
+.highlighter {
+  background: rgba(0, 255, 0, 0.25);
+  border: 1px dashed #fff;
+  z-index: 1;
+  position: absolute;
+}
