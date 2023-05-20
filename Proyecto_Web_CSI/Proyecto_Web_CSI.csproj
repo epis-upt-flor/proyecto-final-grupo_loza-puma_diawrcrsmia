@@ -684,13 +684,6 @@
     <Content Include="Assets\vendors\typeahead.js\typeahead.bundle.min.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Views\Historico\tables-datatable.html" />
-    <Content Include="Views\Home\layouts-hori-boxed-width.html" />
-    <Content Include="Views\Login\auth-login-2.html" />
-    <Content Include="Views\Objetos\tables-editable.html" />
-    <Content Include="Views\Reportes\charts-apex.html" />
-    <Content Include="Views\Usuarios\contacts-list.html" />
-    <Content Include="Views\Usuarios\ecommerce-orders.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

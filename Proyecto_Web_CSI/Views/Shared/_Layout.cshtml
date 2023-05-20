@@ -2,8 +2,8 @@
 @{
     Layout = null;
 
-    string nombreusuario = "hola Muendo";// Session["nombre"].ToString();
-    string rol = "Administradr"; //Session["rol"].ToString();
+    string nombreusuario = Session["nombre"].ToString();
+    string rol = Session["rol"].ToString();
 
 }
 
@@ -18,6 +18,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
+
     <link rel="shortcut icon" href="~/Assets/images/favicon.ico">
 
     <!-- Bootstrap Css -->
